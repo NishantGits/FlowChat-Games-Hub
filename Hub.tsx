@@ -14,6 +14,14 @@ interface Game {
 
 const GAMES: Game[] = [
   {
+    id: 'sky-metropolis',
+    name: 'Sky Metropolis',
+    description: 'Build your city, manage citizens, and expand your skyline.',
+    path: '#/sky-metropolis',
+    icon: <Monitor className="w-5 h-5 text-white" />,
+    thumbnail: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&q=80&w=800'
+  },
+  {
     id: 'runner',
     name: 'Runner',
     description: 'Endless runner, dodge obstacles',
@@ -184,7 +192,7 @@ const Hub = () => {
             </button>
           </div>
           <div className="text-[10px] font-mono text-[var(--muted)] uppercase tracking-wider hidden sm:block">
-             v1.0.4-beta
+             v1.0.5-beta
           </div>
         </div>
       </header>

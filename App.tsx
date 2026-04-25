@@ -3,6 +3,7 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import RunnerApp from './runner/RunnerApp';
 import TetrisApp from './tetris/TetrisApp';
 import BubbleShooterApp from './bubble/BubbleShooterApp';
+import SkyMetropolisApp from './SkyMetropolisApp';
 import Hub from './Hub';
 
 // Placeholder for other games to avoid 404 in iframes
@@ -27,6 +28,7 @@ const App = () => {
         <Route path="/runner" element={<RunnerApp />} />
         <Route path="/tetris" element={<TetrisApp />} />
         <Route path="/bubble" element={<BubbleShooterApp />} />
+        <Route path="/sky-metropolis" element={<SkyMetropolisApp />} />
         <Route path="/snake" element={<PlaceholderGame name="Snake" />} />
         <Route path="/2048" element={<PlaceholderGame name="2048" />} />
       </Routes>
