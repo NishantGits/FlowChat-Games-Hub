@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Play, X, Gamepad2, Trophy, Clock, Star, Sun, Moon, Monitor, Lock } from 'lucide-react';
-import skymetropolisThumb from './screenshots/skymetropolis.png';
-import runnerThumb from './screenshots/runner.png';
-import tetrisThumb from './screenshots/tetris.png';
-import bubbleThumb from './screenshots/bubble.png';
+import { images } from './gameImages';
 
 type Theme = 'light' | 'dark' | 'system';
 
@@ -24,7 +21,7 @@ const GAMES: Game[] = [
     description: 'Build your city, manage citizens, and expand your skyline.',
     path: '#/sky-metropolis',
     icon: <Monitor className="w-5 h-5 text-white" />,
-    thumbnail: skymetropolisThumb
+    thumbnail: images.skymetropolis
   },
   {
     id: 'runner',
@@ -32,7 +29,7 @@ const GAMES: Game[] = [
     description: 'Endless runner, dodge obstacles',
     path: '#/runner',
     icon: <Trophy className="w-5 h-5 text-white" />,
-    thumbnail: runnerThumb
+    thumbnail: images.runner
   },
   {
     id: 'tetris',
@@ -40,7 +37,7 @@ const GAMES: Game[] = [
     description: 'Classic block stacking',
     path: '#/tetris',
     icon: <Gamepad2 className="w-5 h-5 text-white" />,
-    thumbnail: tetrisThumb
+    thumbnail: images.tetris
   },
   {
     id: 'bubble',
@@ -48,7 +45,7 @@ const GAMES: Game[] = [
     description: 'Pop matching bubbles',
     path: '#/bubble',
     icon: <Star className="w-5 h-5 text-white" />,
-    thumbnail: bubbleThumb
+    thumbnail: images.bubble
   },
   {
     id: 'snake',
