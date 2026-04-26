@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Play, X, Gamepad2, Trophy, Clock, Star, Sun, Moon, Monitor, Lock } from 'lucide-react';
+import skymetropolisThumb from './screenshots/skymetropolis.png';
+import runnerThumb from './screenshots/runner.png';
+import tetrisThumb from './screenshots/tetris.png';
+import bubbleThumb from './screenshots/bubble.png';
 
 type Theme = 'light' | 'dark' | 'system';
 
@@ -20,7 +24,7 @@ const GAMES: Game[] = [
     description: 'Build your city, manage citizens, and expand your skyline.',
     path: '#/sky-metropolis',
     icon: <Monitor className="w-5 h-5 text-white" />,
-    thumbnail: '/screenshots/skymetropolis.png'
+    thumbnail: skymetropolisThumb
   },
   {
     id: 'runner',
@@ -28,7 +32,7 @@ const GAMES: Game[] = [
     description: 'Endless runner, dodge obstacles',
     path: '#/runner',
     icon: <Trophy className="w-5 h-5 text-white" />,
-    thumbnail: '/screenshots/runner.png'
+    thumbnail: runnerThumb
   },
   {
     id: 'tetris',
@@ -36,7 +40,7 @@ const GAMES: Game[] = [
     description: 'Classic block stacking',
     path: '#/tetris',
     icon: <Gamepad2 className="w-5 h-5 text-white" />,
-    thumbnail: '/screenshots/tetris.png'
+    thumbnail: tetrisThumb
   },
   {
     id: 'bubble',
@@ -44,7 +48,7 @@ const GAMES: Game[] = [
     description: 'Pop matching bubbles',
     path: '#/bubble',
     icon: <Star className="w-5 h-5 text-white" />,
-    thumbnail: '/screenshots/bubble.png'
+    thumbnail: bubbleThumb
   },
   {
     id: 'snake',
@@ -252,7 +256,7 @@ const Hub = () => {
                   {game.isComingSoon ? (
                     <div className="w-full mt-auto py-2.5 bg-[var(--border)] text-[var(--muted)] text-xs font-bold rounded-lg flex items-center justify-center space-x-2 cursor-not-allowed">
                       <Lock className="w-3.5 h-3.5" />
-                      <span>COMMING SOON</span>
+                      <span>COMING SOON</span>
                     </div>
                   ) : (
                     <button 
