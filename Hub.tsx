@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Play, X, Gamepad2, Trophy, Clock, Star, Sun, Moon, Monitor } from 'lucide-react';
+import { Play, X, Gamepad2, Trophy, Clock, Star, Sun, Moon, Monitor, Lock } from 'lucide-react';
 
 type Theme = 'light' | 'dark' | 'system';
 
@@ -10,6 +10,7 @@ interface Game {
   path: string;
   icon: React.ReactNode;
   thumbnail: string;
+  isComingSoon?: boolean;
 }
 
 const GAMES: Game[] = [
@@ -19,7 +20,7 @@ const GAMES: Game[] = [
     description: 'Build your city, manage citizens, and expand your skyline.',
     path: '#/sky-metropolis',
     icon: <Monitor className="w-5 h-5 text-white" />,
-    thumbnail: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&q=80&w=800'
+    thumbnail: '/screenshots/skymetropolis.png'
   },
   {
     id: 'runner',
@@ -27,7 +28,7 @@ const GAMES: Game[] = [
     description: 'Endless runner, dodge obstacles',
     path: '#/runner',
     icon: <Trophy className="w-5 h-5 text-white" />,
-    thumbnail: 'https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=800'
+    thumbnail: '/screenshots/runner.png'
   },
   {
     id: 'tetris',
@@ -35,7 +36,7 @@ const GAMES: Game[] = [
     description: 'Classic block stacking',
     path: '#/tetris',
     icon: <Gamepad2 className="w-5 h-5 text-white" />,
-    thumbnail: 'https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?auto=format&fit=crop&q=80&w=800'
+    thumbnail: '/screenshots/tetris.png'
   },
   {
     id: 'bubble',
@@ -43,7 +44,7 @@ const GAMES: Game[] = [
     description: 'Pop matching bubbles',
     path: '#/bubble',
     icon: <Star className="w-5 h-5 text-white" />,
-    thumbnail: 'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&q=80&w=800'
+    thumbnail: '/screenshots/bubble.png'
   },
   {
     id: 'snake',
@@ -51,7 +52,8 @@ const GAMES: Game[] = [
     description: 'Classic snake game',
     path: '#/snake',
     icon: <Clock className="w-5 h-5 text-white" />,
-    thumbnail: 'https://images.unsplash.com/photo-1550745165-9bc0b252723f?auto=format&fit=crop&q=80&w=800'
+    thumbnail: '',
+    isComingSoon: true
   },
   {
     id: '2048',
@@ -59,7 +61,8 @@ const GAMES: Game[] = [
     description: 'Merge tiles to reach 2048',
     path: '#/2048',
     icon: <Gamepad2 className="w-5 h-5 text-white" />,
-    thumbnail: 'https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&q=80&w=800'
+    thumbnail: '',
+    isComingSoon: true
   }
 ];
 
@@ -213,14 +216,23 @@ const Hub = () => {
                 className="group relative bg-[var(--card)] border border-[var(--border)] rounded-xl overflow-hidden hover:border-[var(--muted)] hover:scale-[1.02] transition-all duration-300 shadow-sm flex flex-col"
               >
                 {/* Thumbnail Area - Real Screenshot Mockup */}
-                <div className="aspect-[16/10] relative overflow-hidden border-b border-[var(--border)] bg-zinc-900">
+                <div className={`aspect-[16/10] relative overflow-hidden border-b border-[var(--border)] bg-zinc-900 ${game.isComingSoon ? 'grayscale' : ''}`}>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity"></div>
-                  <img 
-                    src={getThumbnail(game)}
-                    alt={game.name} 
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                    referrerPolicy="no-referrer"
-                  />
+                  
+                  {game.isComingSoon ? (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center space-y-2 bg-black/40 backdrop-blur-sm z-20">
+                      <Lock className="w-8 h-8 text-white/50" />
+                      <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/50">Coming Soon</span>
+                    </div>
+                  ) : (
+                    <img 
+                      src={getThumbnail(game)}
+                      alt={game.name} 
+                      className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                      referrerPolicy="no-referrer"
+                    />
+                  )}
+
                   <div className="absolute bottom-3 left-3 z-20 flex items-center space-x-2">
                      <div className="bg-white/20 backdrop-blur-md p-1.5 rounded-lg border border-white/20 text-white">
                         {game.icon}
@@ -236,13 +248,21 @@ const Hub = () => {
                   <p className="text-[var(--muted)] text-xs leading-relaxed mb-6 h-8 line-clamp-2">
                     {game.description}
                   </p>
-                  <button 
-                    onClick={() => setActiveGame(game)}
-                    className="w-full mt-auto py-2.5 bg-[var(--text)] text-[var(--bg)] text-xs font-bold rounded-lg hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center space-x-2"
-                  >
-                    <Play className="w-3.5 h-3.5 fill-current" />
-                    <span>PLAY NOW</span>
-                  </button>
+                  
+                  {game.isComingSoon ? (
+                    <div className="w-full mt-auto py-2.5 bg-[var(--border)] text-[var(--muted)] text-xs font-bold rounded-lg flex items-center justify-center space-x-2 cursor-not-allowed">
+                      <Lock className="w-3.5 h-3.5" />
+                      <span>COMMING SOON</span>
+                    </div>
+                  ) : (
+                    <button 
+                      onClick={() => setActiveGame(game)}
+                      className="w-full mt-auto py-2.5 bg-[var(--text)] text-[var(--bg)] text-xs font-bold rounded-lg hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center space-x-2"
+                    >
+                      <Play className="w-3.5 h-3.5 fill-current" />
+                      <span>PLAY NOW</span>
+                    </button>
+                  )}
                 </div>
               </div>
             ))}
