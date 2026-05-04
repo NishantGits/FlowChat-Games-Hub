@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Play, X, Gamepad2, Gamepad, Trophy, Clock, Star, Sun, Moon, Monitor, Lock, Info } from 'lucide-react';
+import { Play, X, Gamepad2, Gamepad, Trophy, Clock, Star, Sun, Moon, Monitor, Lock, Info, Rocket, Flag } from 'lucide-react';
 import { images } from './gameImages'; 
 
 type Theme = 'light' | 'dark' | 'system';
@@ -60,6 +60,24 @@ const GAMES: Game[] = [
     icon: <Star className="w-5 h-5 text-white" />,
     thumbnail: images.bubble,
     scoreKey: 'bubble_shooter_highscore'
+  },
+  {
+    id: 'android-jetpack',
+    name: 'Android Jetpack',
+    description: 'Master the skies with your high-tech jetpack.',
+    path: 'https://android-jetpack.vercel.app',
+    icon: <Rocket className="w-5 h-5 text-white" />,
+    thumbnail: images.androidjetpack,
+    scoreKey: 'android_jetpack_highscore'
+  },
+  {
+    id: 'hole-in-one',
+    name: 'Hole in One',
+    description: 'Precision golf. Aim, power, and shoot for the perfect score.',
+    path: 'https://hole-in-one-two.vercel.app/',
+    icon: <Flag className="w-5 h-5 text-white" />,
+    thumbnail: images.holeinone,
+    scoreKey: 'hole_in_one_highscore'
   }
 ];
 
@@ -108,22 +126,19 @@ const Hub = () => {
     const applyTheme = (t: Theme) => {
       root.classList.remove('light', 'dark');
       const isDark = t === 'dark' || (t === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-      if (isDark) {
-        root.classList.add('dark');
-      } else {
-        root.classList.add('light');
-      }
+      root.classList.add(isDark ? 'dark' : 'light');
+      root.style.colorScheme = isDark ? 'dark' : 'light';
     };
 
     applyTheme(theme);
-    localStorage.setItem('theme', theme);
+    localStorage.setItem('game-hub-theme', theme);
 
-    if (theme === 'system') {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      const handleChange = () => applyTheme('system');
-      mediaQuery.addEventListener('change', handleChange);
-      return () => mediaQuery.removeEventListener('change', handleChange);
-    }
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = () => {
+      if (theme === 'system') applyTheme('system');
+    };
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, [theme]);
 
   useEffect(() => {
@@ -163,7 +178,7 @@ const Hub = () => {
       <ScreenshotGenerator games={GAMES} screenshots={screenshots} />
 
       {/* Top Bar */}
-      <header className="h-14 shrink-0 bg-header-bg backdrop-blur-md border-b border-header-border flex items-center justify-between px-6 z-40 transition-colors duration-300">
+      <header className="h-14 shrink-0 bg-header-bg backdrop-blur-md border-b border-header-border flex items-center justify-between px-6 z-40 transition-colors duration-300 text-header-text">
         <div className="flex items-center space-x-3">
           <img src="https://flowchats.org/static/favicon.svg" alt="FlowChat Logo" className="w-7 h-7" />
           <h1 className="text-base font-bold tracking-tight">FlowChat Games</h1>

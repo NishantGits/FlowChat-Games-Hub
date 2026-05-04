@@ -62,6 +62,8 @@ const App = () => {
           <Route path="/tetris" element={<TetrisApp />} />
           <Route path="/bubble" element={<BubbleShooterApp />} />
           <Route path="/sky-metropolis" element={<SkyMetropolisApp />} />
+          <Route path="/android-jetpack" element={<PlaceholderGame name="Android Jetpack" />} />
+          <Route path="/hole-in-one" element={<PlaceholderGame name="Hole in One" />} />
           <Route path="/snake" element={<PlaceholderGame name="Snake" />} />
           <Route path="/2048" element={<PlaceholderGame name="2048" />} />
         </Routes>

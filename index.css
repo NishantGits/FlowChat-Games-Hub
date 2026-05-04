@@ -1,5 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
-@import "tailwindcss";
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --muted: #64748b;
+  --header-bg: rgba(255, 255, 255, 0.8);
+  --header-border: #f1f5f9;
+  --header-text: #0f172a;
+}
+
+.light {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --muted: #64748b;
+  --header-bg: rgba(255, 255, 255, 0.8);
+  --header-border: #f1f5f9;
+  --header-text: #0f172a;
+}
+
+.dark {
+  --background: #0f1117;
+  --foreground: #f8fafc;
+  --card: #1e293b;
+  --border: #334155;
+  --muted: #94a3b8;
+  --header-bg: rgba(15, 17, 23, 0.8);
+  --header-border: #1e293b;
+  --header-text: #f8fafc;
+}
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -12,27 +42,10 @@
   --color-muted: var(--muted);
   --color-header-bg: var(--header-bg);
   --color-header-border: var(--header-border);
+  --color-header-text: var(--header-text);
 }
 
-:root {
-  --background: #ffffff;
-  --foreground: #1a1a1a;
-  --card: #f8f9fa;
-  --border: #e9ecef;
-  --muted: #adb5bd;
-  --header-bg: rgba(255, 255, 255, 0.85);
-  --header-border: #e9ecef;
-}
-
-.dark {
-  --background: #0c0c0c;
-  --foreground: #f5f5f5;
-  --card: #141414;
-  --border: #262626;
-  --muted: #666666;
-  --header-bg: rgba(22, 22, 22, 0.85);
-  --header-border: #262626;
-}
+@import "tailwindcss";
 
 html, body, #root {
   height: 100%;
