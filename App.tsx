@@ -1,8 +1,6 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import RunnerApp from './runner/RunnerApp';
-import TetrisApp from './tetris/TetrisApp';
-import BubbleShooterApp from './bubble/BubbleShooterApp';
 import SkyMetropolisApp from './SkyMetropolisApp';
 import Hub from './Hub';
 
@@ -59,8 +57,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Hub />} />
           <Route path="/runner" element={<RunnerApp />} />
-          <Route path="/tetris" element={<TetrisApp />} />
-          <Route path="/bubble" element={<BubbleShooterApp />} />
           <Route path="/sky-metropolis" element={<SkyMetropolisApp />} />
           <Route path="/android-jetpack" element={<PlaceholderGame name="Android Jetpack" />} />
           <Route path="/hole-in-one" element={<PlaceholderGame name="Hole in One" />} />

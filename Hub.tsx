@@ -44,24 +44,6 @@ const GAMES: Game[] = [
     scoreKey: 'stretchycat_highscore'
   },
   {
-    id: 'tetris',
-    name: 'Tetris',
-    description: 'Classic block stacking',
-    path: '#/tetris',
-    icon: <Gamepad2 className="w-5 h-5 text-white" />,
-    thumbnail: images.tetris,
-    scoreKey: 'tetris_highscore'
-  },
-  {
-    id: 'bubble',
-    name: 'Bubble Shooter',
-    description: 'Pop matching bubbles',
-    path: '#/bubble',
-    icon: <Star className="w-5 h-5 text-white" />,
-    thumbnail: images.bubble,
-    scoreKey: 'bubble_shooter_highscore'
-  },
-  {
     id: 'android-jetpack',
     name: 'Android Jetpack',
     description: 'Master the skies with your high-tech jetpack.',
