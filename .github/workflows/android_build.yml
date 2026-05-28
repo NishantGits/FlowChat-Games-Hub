@@ -63,14 +63,13 @@ jobs:
           name: FlowChatGames-APK
           path: build-artifacts/FlowChatGames.apk
 
-      - name: Create or Update GitHub Release
-        uses: softprops/action-gh-release@v2
-        if: startsWith(github.ref, 'refs/tags/') || github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
-        with:
-          tag_name: ${{ github.ref_name == 'main' && 'latest' || (github.ref_name == 'master' && 'latest' || github.ref_name) }}
-          name: ${{ github.ref_name == 'main' && 'Latest Release' || (github.ref_name == 'master' && 'Latest Android Release' || concat('Release ', github.ref_name)) }}
-          draft: false
-          prerelease: false
-          files: build-artifacts/FlowChatGames.apk
+      - name: Create or Update GitHub Release (Native gh CLI)
+        run: |
+          # Configure GitHub CLI release
+          gh release create "latest" build-artifacts/FlowChatGames.apk \
+            --title "Latest Android Build" \
+            --notes "This is an automated native compilation of the latest FlowChat Games Hub APK." \
+            --clobber || \
+          gh release upload "latest" build-artifacts/FlowChatGames.apk --clobber
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
