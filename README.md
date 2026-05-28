@@ -1,20 +1,34 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 🚀 FlowChat Games
 
-# Run and deploy your AI Studio app
+Introducing **FlowChat Games**, a curated collection of high-performance, web-based mini-games designed to live directly within your FlowChat environment. 
 
-This contains everything you need to run your app locally.
+FlowChat Games isn't just about killing time; it's about showcasing the power of integrated web apps and providing a seamless, fun break without ever leaving your primary interface.
 
-View your app in AI Studio: https://ai.studio/apps/de0eeef8-8ec5-4c75-bd3a-51d35e449fc4
+## 🎮 Featured Games
 
-## Run Locally
+Our current roster includes a variety of genres to suit every mood:
 
-**Prerequisites:**  Node.js
+*   **Sky Metropolis**: Build and manage your glowing isometric dream city.
+*   **Neon Runner**: A high-speed, side-scrolling endless runner set in a futuristic cityscape.
+*   **Battlefields**: A tactical combat simulation where you command your spartan and survive.
+*   **2048**: A classic tile-merging puzzle challenge to reach the 2048 block.
+*   **Stretchy Cat**: A playful puzzle game where you navigate a very long cat through challenging grids.
+*   **Android Jetpack**: Take to the skies! Master the art of flight in this vertical transition adventure.
+*   **Hole in One**: A precision-based casual golf experience.
 
+## 🛠 Tech Stack
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Built with modern web standards to ensure smooth performance across all devices:
+
+- **Framework**: React 18+ with Vite
+- **Language**: TypeScript for robust, type-safe gameplay
+- **Styling**: Tailwind CSS for responsive and crisp UI
+- **Animations**: `motion` (Framer Motion) for fluid transitions
+- **Architecture**: Single Page Application (SPA) with Hash Routing for easy embedding
+
+### High Score Persistence
+FlowChat Games utilizes `localStorage` to keep track of your progress and high scores locally. This ensures that your records stay with you on your device.
+
+---
+
+*Like FlowChat games, these games are made with ❤️ by the Games for FlowChat Community.*

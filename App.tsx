@@ -50,6 +50,27 @@ const PlaceholderGame = ({ name }: { name: string }) => (
   </div>
 );
 
+// High-performance iframe wrapper for local folder games
+const LocalGame = ({ src, name }: { src: string; name: string }) => (
+  <div className="w-screen h-screen bg-[#070707] relative overflow-hidden">
+    <button 
+      onClick={() => window.parent.postMessage('close-game', '*')}
+      className="fixed top-4 right-4 p-2 bg-black/60 hover:bg-neutral-800 rounded-full border border-white/10 text-white transition-all duration-200 z-[9999] flex items-center justify-center"
+      title="Close Game"
+    >
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+    <iframe 
+      src={src} 
+      className="w-full h-full border-none"
+      title={name}
+      allow="gamepad; fullscreen"
+    />
+  </div>
+);
+
 const App = () => {
   return (
     <ErrorBoundary>
@@ -61,7 +82,8 @@ const App = () => {
           <Route path="/android-jetpack" element={<PlaceholderGame name="Android Jetpack" />} />
           <Route path="/hole-in-one" element={<PlaceholderGame name="Hole in One" />} />
           <Route path="/snake" element={<PlaceholderGame name="Snake" />} />
-          <Route path="/2048" element={<PlaceholderGame name="2048" />} />
+          <Route path="/2048" element={<LocalGame src="/2048/index.html" name="2048" />} />
+          <Route path="/battlefields" element={<LocalGame src="/battlefields/index.html" name="Battlefields" />} />
         </Routes>
       </Router>
     </ErrorBoundary>
