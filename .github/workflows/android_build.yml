@@ -26,6 +26,9 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -44,23 +47,18 @@ jobs:
       - name: Sync Capacitor Android Project
         run: npx cap sync android
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
-
-      - name: Regenerate Gradle Wrapper (Heals Binary Corruption)
-        run: |
-          cd android
-          gradle wrapper --gradle-version 8.14.3
-
       - name: Build Android Debug APK
         run: |
           cd android
-          chmod +x gradlew
           ./gradlew assembleDebug
 
       - name: Find and Rename APK
         run: |
           mkdir -p build-artifacts
+          if [ ! -f android/app/build/outputs/apk/debug/app-debug.apk ]; then
+            echo "APK not found!"
+            exit 1
+          fi
           cp android/app/build/outputs/apk/debug/app-debug.apk build-artifacts/FlowChatGames.apk
           echo "APK successfully compiled and prepared!"
 
@@ -70,13 +68,11 @@ jobs:
           name: FlowChatGames-APK
           path: build-artifacts/FlowChatGames.apk
 
-      - name: Create or Update GitHub Release (Native gh CLI)
+      - name: Create or Update GitHub Release
         run: |
-          # Configure GitHub CLI release
-          gh release create "latest" build-artifacts/FlowChatGames.apk \
+          gh release delete latest --yes || true
+          gh release create latest build-artifacts/FlowChatGames.apk \
             --title "Latest Android Build" \
-            --notes "This is an automated native compilation of the latest FlowChat Games Hub APK." \
-            --clobber || \
-          gh release upload "latest" build-artifacts/FlowChatGames.apk --clobber
+            --notes "This is an automated native compilation of the latest FlowChat Games Hub APK."
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
