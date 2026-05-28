@@ -352,7 +352,7 @@ const Hub = () => {
       {/* CrazyGames Custom Top Navigation */}
       <header className="h-16 shrink-0 bg-[#0c101d] dark:bg-[#0c101d] light:bg-[#f3f4f6] border-b border-[#1f2937] dark:border-[#1f2937] light:border-neutral-300 flex items-center justify-between px-4 sm:px-6 z-40 transition-colors duration-300">
         <div className="flex items-center space-x-3 sm:space-x-4">
-          <img src="https://flowchats.org/static/favicon.svg" alt="FlowChat Logo" className="w-8 h-8 animate-pulse" />
+          <img src="https://flowchats.org/static/favicon.svg" alt="FlowChat Logo" className="w-8 h-8 animate-pulse" referrerPolicy="no-referrer" />
           <div className="flex flex-col">
             <div className="flex items-center space-x-2">
               <span className="text-sm font-black tracking-tight text-white dark:text-white light:text-zinc-900 uppercase">
@@ -511,6 +511,7 @@ const Hub = () => {
                         src={getThumbnail(game) || ''} 
                         alt={game.name} 
                         className="w-10 h-10 rounded-lg object-cover border border-[#1e293b]" 
+                        referrerPolicy="no-referrer"
                       />
                       <div className="flex-1 min-w-0">
                         <div className="text-[11px] font-bold truncate text-white dark:text-white light:text-zinc-800">
@@ -816,7 +817,7 @@ const Hub = () => {
             {/* Bottom Footer block */}
             <footer className="pt-16 pb-8 border-t border-zinc-800/20 text-center">
               <div className="flex items-center justify-center space-x-2 text-zinc-400 font-extrabold text-sm uppercase max-auto mb-4">
-                <img src="https://flowchats.org/static/favicon.svg" alt="Footer Logo" className="w-5 h-5 opacity-60" />
+                <img src="https://flowchats.org/static/favicon.svg" alt="Footer Logo" className="w-5 h-5 opacity-60" referrerPolicy="no-referrer" />
                 <span>FlowChat Games Platform</span>
               </div>
               <p className="text-[10px] text-zinc-500 leading-relaxed max-w-sm mx-auto">
