@@ -79,6 +79,7 @@ const App = () => {
           <Route path="/" element={<Hub />} />
           <Route path="/runner" element={<RunnerApp />} />
           <Route path="/sky-metropolis" element={<SkyMetropolisApp />} />
+          <Route path="/word-wheel" element={<LocalGame src="https://word-wheel-lac.vercel.app" name="Word Wheel" />} />
           <Route path="/android-jetpack" element={<PlaceholderGame name="Android Jetpack" />} />
           <Route path="/hole-in-one" element={<PlaceholderGame name="Hole in One" />} />
           <Route path="/snake" element={<PlaceholderGame name="Snake" />} />

@@ -1,6 +1,8 @@
 {
   "name": "Remix: FlowChat Games Hub",
-  "description": "A minimal, clean arcade hub for FlowChat featuring Hole in One, Android Jetpack, the Runner game and other classics.",
+  "description": "A complete arcade hub for FlowChat featuring the brand new Word Wheel connector game, Hole in One, Android Jetpack, the Runner, and more classics.",
   "requestFramePermissions": [],
-  "majorCapabilities": []
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
