@@ -85,6 +85,9 @@ const App = () => {
           <Route path="/snake" element={<PlaceholderGame name="Snake" />} />
           <Route path="/2048" element={<LocalGame src="/2048/index.html" name="2048" />} />
           <Route path="/battlefields" element={<LocalGame src="/battlefields/index.html" name="Battlefields" />} />
+          <Route path="/memory-match" element={<LocalGame src="https://memory-match-rho-rust.vercel.app/" name="Memory Match" />} />
+          <Route path="/arena-2d" element={<LocalGame src="https://2d-arena.vercel.app/" name="2D Arena" />} />
+          <Route path="/kubik-build" element={<LocalGame src="https://kubik-web-alpha.vercel.app" name="Kubik Build" />} />
         </Routes>
       </Router>
     </ErrorBoundary>

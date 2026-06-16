@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Play, X, Gamepad2, Gamepad, Trophy, Clock, Star, Sun, Moon, Monitor, Lock, Info, Rocket, Flag, Swords, Grid } from 'lucide-react';
+import { Play, X, Gamepad2, Gamepad, Trophy, Clock, Star, Sun, Moon, Monitor, Lock, Info, Rocket, Flag, Swords, Grid, Layers, Zap, Hammer } from 'lucide-react';
 import { images } from './gameImages'; 
 
 type Theme = 'light' | 'dark' | 'system';
@@ -16,6 +16,15 @@ interface Game {
 }
 
 const GAMES: Game[] = [
+  {
+    id: 'kubik-build',
+    name: 'Kubik Build',
+    description: 'A creative 3D sandbox building game based on ClassiCube. Place blocks, model worlds, and design your destiny!',
+    path: '#/kubik-build',
+    icon: <Hammer className="w-5 h-5 text-white" />,
+    thumbnail: images.kubikbuild,
+    scoreKey: 'kubik_build_highscore'
+  },
   {
     id: 'sky-metropolis',
     name: 'Sky Metropolis',
@@ -87,6 +96,24 @@ const GAMES: Game[] = [
     icon: <Flag className="w-5 h-5 text-white" />,
     thumbnail: images.holeinone,
     scoreKey: 'hole_in_one_highscore'
+  },
+  {
+    id: 'memory-match',
+    name: 'Memory Match',
+    description: 'Train your brain! Flip tiles, find matching twin pairs, and score heavy combo multipliers.',
+    path: '#/memory-match',
+    icon: <Layers className="w-5 h-5 text-white" />,
+    thumbnail: images.memorymatch,
+    scoreKey: 'memory_match_highscore'
+  },
+  {
+    id: 'arena-2d',
+    name: '2D Arena',
+    description: 'High-octane space survival! Pilot a cyber interceptor, dodge danger, and destroy incoming geometric waves.',
+    path: '#/arena-2d',
+    icon: <Zap className="w-5 h-5 text-white" />,
+    thumbnail: images.arena2d,
+    scoreKey: 'arena_2d_highscore'
   }
 ];
 
